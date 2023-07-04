@@ -1,0 +1,17 @@
+.storefront-main {
+  width: 100%;
+
+  @include media-breakpoint-up(md) {
+    position: relative;
+  }
+}
+
+.browserupdate-main {
+  margin: 20vh auto;
+  min-width: 350px;
+  width: 35%;
+
+  a {
+    color: $color-carmine;
+  }
+}

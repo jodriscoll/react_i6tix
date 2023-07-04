@@ -1,0 +1,44 @@
+// global dependencies
+@import "utils/functions";
+@import "utils/variables";
+@import "components/common/icons";
+
+// vendor modules
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+@import "~bootstrap/scss/bootstrap.scss";
+
+// mixins
+@import "utils/mixins";
+
+// baseline definitions
+@import "base/type";
+@import "base/scaffolding";
+@import "base/buttons";
+@import "base/forms";
+
+// global components
+@import "layout/header";
+@import "layout/footer";
+@import "components/modals/styles";
+
+// component specific partials
+@import "components/common/loader";
+@import "components/common/spinner";
+@import "components/common/selection-frame";
+@import "components/common/logo";
+@import "components/common/instructors";
+@import "components/common/alerts";
+@import "components/poster/styles";
+@import "components/order-summary/styles";
+@import "components/cart/styles";
+@import "components/checkout/styles";
+@import "components/not-found/styles";
+@import "components/root/styles";
+
+// vendor overrides
+@import "vendor/bootstrap/overrides";
+
+// color theme overrides
+//@import "theme/dark";
+//@import "theme/light";

@@ -1,0 +1,172 @@
+// font variables
+$icon-font-path:      "../icons" !default;  // location of the font during http request
+
+$ico-arrow-left:      \e900;
+$ico-arrow-right:     \e901;
+$ico-camera:          \e902;
+$ico-cart:            \e903;
+$ico-check:           \e904;
+$ico-close:           \e905;
+$ico-computer:        \e906;
+$ico-edit:            \e907;
+$ico-exclamation:     \e908;
+$ico-facebook:        \e909;
+$ico-grid:            \e90a;
+$ico-instagram:       \e90b;
+$ico-left:            \e90c;
+$ico-phone:           \e90d;
+$ico-remove:          \e90e;
+$ico-right:           \e90f;
+$ico-rotate-left:     \e910;
+$ico-rotate-right:    \e911;
+$ico-twitter:         \e912;
+$ico-zoom-in:         \e913;
+$ico-zoom-out:        \e914;
+
+
+// font functions
+@font-face {
+  font-family: 'icons';
+  src:  url('#{$icon-font-path}/icons.eot?pedwa8');
+  src:  url('#{$icon-font-path}/icons.eot?pedwa8#iefix') format('embedded-opentype'),
+        url('#{$icon-font-path}/icons.ttf?pedwa8') format('truetype'),
+        url('#{$icon-font-path}/icons.woff?pedwa8') format('woff'),
+        url('#{$icon-font-path}/icons.svg?pedwa8#icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// icon css attribute selector
+[class^="ico-"],
+[class*=" ico-"] {
+  // use !important to prevent issues with browser extensions that change fonts
+  font-family: 'icons' !important;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  speak: none;
+  text-transform: none;
+  transition: color .15s ease-in-out;
+
+  // better font rendering
+  -moz-osx-font-smoothing: grayscale;
+   -webkit-font-smoothing: antialiased;
+}
+
+
+// function for unicode() function
+@function unicode($str) {
+  @return unquote("\"") + $str + unquote("\"");
+}
+
+
+// icon classes
+.ico-arrow-left {
+  &:before {
+    content: unicode($ico-arrow-left);
+  }
+}
+.ico-arrow-right {
+  &:before {
+    content: unicode($ico-arrow-right);
+  }
+}
+.ico-camera {
+  &:before {
+    content: unicode($ico-camera);
+  }
+}
+.ico-cart {
+  &:before {
+    content: unicode($ico-cart);
+  }
+}
+.ico-check {
+  &:before {
+    content: unicode($ico-check);
+  }
+}
+.ico-close {
+  &:before {
+    content: unicode($ico-close);
+  }
+}
+.ico-computer {
+  &:before {
+    content: unicode($ico-computer);
+  }
+}
+.ico-edit {
+  &:before {
+    content: unicode($ico-edit);
+  }
+}
+.ico-exclamation {
+  &:before {
+    content: unicode($ico-exclamation);
+  }
+}
+.ico-facebook {
+  &:before {
+    color: $social-facebook;
+    content: unicode($ico-facebook);
+  }
+}
+.ico-grid {
+  &:before {
+    content: unicode($ico-grid);
+  }
+}
+.ico-instagram {
+  &:before {
+    color: $social-instagram;
+    content: unicode($ico-instagram);
+  }
+}
+.ico-left {
+  &:before {
+    content: unicode($ico-left);
+  }
+}
+.ico-phone {
+  &:before {
+    content: unicode($ico-phone);
+  }
+}
+.ico-remove {
+  &:before {
+    content: unicode($ico-remove);
+  }
+}
+.ico-right {
+  &:before {
+    content: unicode($ico-right);
+  }
+}
+.ico-rotate-left {
+  &:before {
+    content: unicode($ico-rotate-left);
+  }
+}
+.ico-rotate-right {
+  &:before {
+    content: unicode($ico-rotate-right);
+  }
+}
+.ico-twitter {
+  &:before {
+    color: $social-twitter;
+    content: unicode($ico-twitter);
+  }
+}
+.ico-zoom-in {
+  &:before {
+    content: unicode($ico-zoom-in);
+  }
+}
+.ico-zoom-out {
+  &:before {
+    content: unicode($ico-zoom-out);
+  }
+}

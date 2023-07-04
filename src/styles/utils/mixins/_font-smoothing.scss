@@ -1,0 +1,5 @@
+@mixin font-smoothing($param1, $param2) {
+// REQUIRED per discussion regarding perceived font colors
+  -moz-osx-font-smoothing: $param1;   // recommend grayscale
+  -webkit-font-smoothing: $param2;    // recommend antialiased
+}

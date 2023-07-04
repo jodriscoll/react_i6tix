@@ -1,0 +1,55 @@
+// billing information is the same as shipping information
+&__billing-same-shipping {
+  display: flex;
+  align-items: center;
+  margin: rem(10px) 0 rem(20px);
+
+  // checkbox span
+  span {
+    // text that proceeds the checkbox
+    + span {
+      font-size: rem(12px);
+      margin-left: rem(16px);
+    }
+  }
+}
+
+// 2 column display form groups
+&__country-state,
+&__credit-card-info {
+
+  @include media-breakpoint-down(md) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include media-breakpoint-up(lg) {
+    width: 345px;
+  }
+
+  .form-group {
+    flex: 1;
+
+    + .form-group {
+      @include media-breakpoint-up(lg) {
+        margin-left: rem(16px);
+      }
+    }
+  }
+}
+
+
+&__credit-card-number,
+&__credit-card-info {
+  .numericFormGroup {
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  }
+}

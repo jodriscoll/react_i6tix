@@ -1,0 +1,17 @@
+&__payment-review {
+  @include order-review();
+  margin-bottom: rem(20px);
+
+  h5 {
+
+    &:last-of-type { // "Billing Address" text
+      margin-top: rem(30px);
+    }
+  }
+
+  // address span text blocks
+  .address {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,127 @@
+// viewing cart contents
+.poster-view-cart {
+
+  @include media-breakpoint-up(lg) {
+    padding-bottom: rem(30px);
+  }
+
+  // bootstrap card overrides
+  .card {
+
+    @include media-breakpoint-down(md) {
+      background-color: transparent;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    &-title {
+      @include media-breakpoint-down(md) {
+        border-bottom: $form-border-style;
+        display: flex;
+        font-size: rem(18px);
+        justify-content: space-between;
+        margin: 0 rem(-15px) rem(20px);
+        padding: 0 rem(20px) rem(20px);
+      }
+
+      @include media-breakpoint-up(lg) {
+        display: none;
+      }
+    }
+
+    &__title {
+      font-weight: 700;
+      margin-bottom: 0;
+
+      @include media-breakpoint-down(md) {
+        font-size: rem(18px);
+      }
+
+      @include media-breakpoint-up(lg) {
+        font-size: rem(22px);
+      }
+    }
+  }
+
+  // card wrapper
+  .checkout__card {
+
+    .card-footer {
+
+      @include media-breakpoint-down(md) {
+        padding: 0;
+
+        .btn {
+          display: none;
+        }
+      }
+    }
+  }
+
+  // order summary overrides
+  .order-summary {
+
+    .cost {
+
+      a {
+
+        @include media-breakpoint-down(md) {
+          display: block;
+        }
+
+        @include media-breakpoint-up(lg) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// cart icon within app
+.cart {
+  text-align: right;
+
+  @include media-breakpoint-down(md) {
+    position: relative;
+    right: rem(15px);
+  }
+
+  @include media-breakpoint-up(lg) {
+    position: absolute;
+    right: rem(28px);
+  }
+
+  a {
+    align-items: center;
+    color: inherit;
+    display: inline-flex;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin-right: rem(4px);
+    }
+  }
+
+  &__quantity {
+    @include media-breakpoint-up(lg) {
+      margin: 0 rem(4px);
+    }
+  }
+
+  .ico-cart {
+    font-size: rem(22px);
+    margin-right: rem(13px);
+  }
+}
+
+// cart item view
+@import "cart-items";

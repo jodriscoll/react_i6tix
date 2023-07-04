@@ -1,0 +1,144 @@
+// step 3 – preview the poster you built on the previous step
+&.preview-poster {
+  @include media-breakpoint-down(md) {
+    padding: rem(50px) 0 rem(20px);
+  }
+
+  // poster preview column
+  .poster-template {
+    display: flex;
+    flex-direction: column;
+
+    img {
+      box-shadow: $box-shadow-01;
+
+      @include media-breakpoint-down(md) {
+        margin: 0 auto;
+        max-height: 446px;
+        max-width: 302px;
+      }
+
+      @include media-breakpoint-up(lg) {
+        height: auto;
+        width: 100%;
+        transform: rotate(-2deg);
+      }
+    }
+  }
+
+  // confirmation / purchase card
+  .permission-confirmation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include media-breakpoint-down(md) {
+      margin-top: rem(10px);
+    }
+
+    @include media-breakpoint-only(lg) {
+      margin-top: rem(40px);
+    }
+
+    // block for all text/buttons
+    .card {
+      margin: 0 auto;
+
+      @include media-breakpoint-down(md) {
+        background-color: transparent;
+        box-shadow: none;
+
+        &-title {
+          display: none;
+        }
+
+        &-body {
+          padding: 0;
+        }
+      }
+
+      @include media-breakpoint-only(lg) {
+        width: 100%;
+      }
+
+      @include media-breakpoint-up(xl) {
+        width: 80%;
+      }
+    }
+
+    // custom styling for checkbox
+    .custom-control {
+      padding-left: rem(40px);
+    }
+
+    // manage the spacing for the permission check and buttons
+    &__checkbox,
+    &__buttons {
+      margin: 0 auto;
+    }
+
+    // permission checkbox
+    &__checkbox {
+      margin-bottom: rem(30px);
+      width: 80%;
+
+      label {
+        margin: 0;
+      }
+    }
+
+    // "make changes" and "ready to buy!" buttons
+    &__buttons {
+
+      @include media-breakpoint-down(md) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+
+        // controls the visibility of the "Edit" button on poster preview screen (mobile/tablet only)
+        .btn--back {
+          display: block;
+          position: relative;
+          max-width: 30%;
+          bottom: 0;
+        }
+
+        .btn-changes {
+          display: none;
+        }
+
+        .btn--ready-to-buy {
+          max-width: 50%;
+        }
+
+        button {
+          flex: 1;
+          margin-top: 0;
+        }
+      }
+
+      @include media-breakpoint-up(lg) {
+        width: 80%;
+
+        .btn--back {
+          display: none;
+        }
+      }
+    }
+  }
+
+  // footer logos
+  .partner-logos {
+    display: none;
+
+    @include media-breakpoint-up(lg) {
+      bottom: 0;
+      display: block;
+      left: 0;
+      margin: auto;
+      position: absolute;
+      right: 0;
+    }
+  }
+}

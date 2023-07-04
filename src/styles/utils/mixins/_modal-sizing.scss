@@ -1,0 +1,24 @@
+@mixin modal-size($minHeight: null, $maxHeight: null, $breakpoint: null) {
+
+  @if $breakpoint == 'medium' {
+    @include media-breakpoint-down(md) {
+      min-height: $minHeight;
+      max-height: $maxHeight;
+
+      > * {
+        min-height: $minHeight;
+        max-height: $maxHeight;
+      }
+    }
+  }
+
+  @else if $breakpoint == 'large' {
+    @include media-breakpoint-up(lg) {
+      min-height: $minHeight;
+
+      > * {
+        min-height: $minHeight;
+      }
+    }
+  }
+}

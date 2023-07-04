@@ -1,0 +1,136 @@
+.order-summary {
+  font-family: $font-family-base;
+  font-size: rem(22px);
+
+  @include media-breakpoint-down(md) {
+    padding: 0;
+  }
+
+  // order summary card title
+  &__title {
+    font-family: $font-family-base;
+    font-weight: 700;
+
+    @include media-breakpoint-down(md) {
+      font-size: rem(18px);
+      margin: 0 0 rem(10px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      font-size: rem(24px);
+      margin: 0 0 rem(20px);
+    }
+  }
+
+  // cost rows
+  .cost {
+    display: flex;
+    flex-direction: column;
+
+    &__row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: rem(10px) 0;
+
+      @include media-breakpoint-down(md) {
+        border-bottom: 1px solid $brand-color-05;
+        order: 1;
+        padding: 0 rem(5px) rem(10px);
+      }
+
+      // the cost "label"
+      span {
+        font-weight: 300;
+
+        @include media-breakpoint-down(md) {
+          font-size: rem(16px);
+        }
+
+        // the cost "value"
+        + span {
+          font-weight: 700;
+        }
+      }
+
+      // total row
+      &.total {
+
+        @include media-breakpoint-up(lg) {
+          border-top: $form-border-style;
+          margin: 0 rem(-20px) 0;
+          padding: rem(16px) rem(20px) 0;
+        }
+      }
+    }
+
+    // check button on cart view and the last step of checkout
+    .checkout {
+      border-top: $form-border-style;
+      margin: rem(16px) rem(-20px) 0;
+      padding-top: rem(16px);
+      text-align: center;
+
+      @include media-breakpoint-down(md) {
+        display: flex;
+        order: 3;
+      }
+
+      .btn {
+        margin: 0 auto;
+      }
+    }
+
+    // terms and conditions link
+    .terms-and-conditions,
+    .policies {
+      display: inline-flex;
+      justify-content: center;
+      margin-top: rem(14px);
+      text-align: center;
+
+      @include media-breakpoint-down(md) {
+        order: 2;
+      }
+
+      p {
+        @include font-smoothing(grayscale, antialiased);
+        color: $brand-color-13;
+        font-size: rem(14px);
+        justify-content: center;
+        line-height: rem(24px);
+        margin: 0 auto;
+
+        &.title {
+          text-transform: uppercase;
+          color: $brand-color-07;
+          font-weight: 700;
+        }
+
+        @include media-breakpoint-down(md) {
+          width: 100%;
+        }
+
+        span.link {
+          color: $brand-color-14;
+          cursor: pointer;
+          transition: color .1s ease-in-out;
+
+          &:hover {
+            color: darken($brand-color-14, 25%);
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    .policies {
+      width: 100%;
+      display: block;
+
+      .link {
+        text-decoration: underline;
+      }
+    }
+  }
+}

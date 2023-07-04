@@ -1,0 +1,50 @@
+.social {
+
+  .modal {
+
+    // body styling for the contents of social modal output
+    &-body {
+      background-color: $brand-color-15;
+      display: flex;
+      padding-bottom: 0;
+      padding-top: 0;
+
+      // unordered list of albums, photos
+      ul {
+        @include reset-list();
+        padding-top: rem(16px);
+        padding-bottom: rem(16px);
+      }
+
+      // modal body messaging (errors, loading, no albums/photos, etc.)
+      h1 {
+        color: #fff;
+        font-size: rem(18px);
+        margin: rem(50px) auto;
+        text-align: center;
+
+        div & {
+          width: 100%;
+        }
+      }
+    }
+
+    // card footer (has the cancel button)
+    &-footer {
+      border-top: none;
+
+      .btn {
+        margin-right: auto;
+      }
+
+      .btn-okay {
+        margin-right: 0;
+        margin-left: auto;
+
+        .ico {
+          margin-right: rem(5px);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,194 @@
+$form-width: 345px;
+
+// used for verifying that the user owns their photos
+.custom-control {
+
+  // checkbox indicator styles (base)
+  .checkbox-indicator {
+    @include vertical-middle();
+    background: $brand-color-04;
+    border-radius: $custom-checkbox-indicator-border-radius;
+    transition: background .1s ease-in-out;
+
+    &,
+    &:after {
+      height: $custom-control-indicator-size;
+      left: 0;
+      position: absolute;
+      width: $custom-control-indicator-size;
+    }
+
+    &:after {
+      background: no-repeat 50% 50%;
+      background-size: 50% 50%;
+      content: '';
+      top: 0;
+    }
+  }
+
+  // checkbox text
+  .checkbox-text {
+    font-family: $font-family-base;
+    font-size: rem(14px);
+    color: $brand-color-04;
+    padding: 0;
+    margin: 0;
+    transition: color .1s ease-in-out;
+  }
+
+  // when CHECKED
+  input[type="checkbox"]:checked {
+
+    // checkbox indicator color (change to blue with white checkmark)
+    + .checkbox-indicator {
+      background: $custom-control-indicator-checked-bg;
+
+      &:after {
+        background-image: $custom-checkbox-indicator-icon-checked;
+      }
+
+      // checkbox text (change from red to body default)
+      + .checkbox-text {
+        color: $body-color;
+      }
+    }
+  }
+}
+
+// form groups
+.form-group {
+  font-family: $font-family-base;
+
+  @include media-breakpoint-down(md) {
+    .row & {
+      width: 100%;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .row & {
+      width: $form-width;
+    }
+  }
+
+  // labels above each form "row"
+  label {
+    font-weight: 700;
+    margin-left: rem(10px);
+  }
+
+  // error within the parent form-group
+  &.form-error {
+    align-items: center;
+    display: flex;
+    margin-left: rem(10px);
+
+    .ico-exclamation {
+      color: #fff;
+      background: $brand-color-04;
+      border-radius: 100%;
+      display: inline-block;
+      font-size: rem(40px);
+      margin-right: rem(20px);
+      padding: rem(0px);
+    }
+
+    p {
+      display: block;
+      font-family: $font-family-base;
+      position: relative;
+      margin: 0;
+    }
+  }
+
+  // error on form "row"
+  &.has-error {
+    input,
+    select {
+      border: 3px solid $brand-color-04 !important;
+    }
+  }
+
+  // error text displayed under the form field
+  .invalid-input,
+  .invalid-input-text {
+    color: $brand-color-04;
+    display: block;
+    font-size: inherit;
+    font-family: $font-family-base;
+    margin: rem(5px) 0 0 rem(5px);
+
+    @include media-breakpoint-up(md) {
+      //min-width: $form-width;
+    }
+  }
+
+  // controls the display of the default form input fields
+  .form-control {
+    background-color: $brand-color-05;
+    border: none;
+  }
+
+  select.form-control {
+    &::-ms-value,
+    &:focus::-ms-value {
+      background: $brand-color-05;
+    }
+  }
+}
+
+.select-wrapper.has-error {
+  select {
+    border: 3px solid $brand-color-04 !important;
+  }
+}
+
+// CREDIT CARD INPUT
+
+.cc-field-group {
+
+  .cc-fields-container {
+    display: block;
+
+    .cc-fields {
+      position: relative;
+      display: block;
+      padding: 0;
+      margin-bottom: 0;
+
+      label {
+        display: block;
+        margin: 0;
+        font: inherit;
+
+        &:after {
+          display: none;
+        }
+      }
+
+      .cc-fields-card-img {
+        position: absolute;
+        left: rem(10px);
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+      }
+
+      .cc-number {
+        padding-left: rem(44px);
+      }
+    }
+  }
+}
+
+.cc-exp-select-fields {
+  display: flex;
+  position: relative;
+  margin: 0 rem(-5px);
+}
+
+.cc-exp-select {
+  width: 50%;
+  padding-left: rem(5px);
+  padding-right: rem(5px);
+}

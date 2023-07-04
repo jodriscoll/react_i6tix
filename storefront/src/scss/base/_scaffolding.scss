@@ -1,0 +1,21 @@
+body {
+  font-family: $font-family-base;
+  background: url('../imgs/background-pattern.jpg') repeat top left $color-solidwhite;
+  min-height: 600px;
+}
+
+#storefront {
+  display: none;
+}
+
+#loader {
+  display: block;
+}
+
+.modal__mobile-poster-grid {
+
+  .modal-content {
+    background: url('../imgs/background-pattern.jpg') repeat top left $color-solidwhite;
+  }
+}
+

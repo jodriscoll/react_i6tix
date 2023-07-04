@@ -1,0 +1,127 @@
+// leveraged for positioning the "Edit" buttons during the Review Order screen
+@mixin order-review() {
+  border-top: $form-border-style;
+  margin: rem(-20px);
+  padding-top: rem(30px);
+
+  > div {
+    position: relative;
+
+    @include media-breakpoint-down(md) {
+      margin: 0 rem(15px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin: 0 rem(30px);
+    }
+  }
+
+  .btn {
+    bottom: 0;
+    position: absolute;
+    right: 0;
+  }
+}
+
+.checkout {
+  // handle an empty cart
+  &__empty-text {
+    font-size: rem(18px);
+    margin: rem(20px) 0;
+    text-align: center;
+
+    h2 {
+      margin-bottom: rem(20px);
+    }
+  }
+}
+
+// checkout wrapper
+.poster-checkout {
+
+  @include media-breakpoint-up(lg) {
+    padding-bottom: rem(30px);
+  }
+
+  // titles for posters and section headings
+  h5 {
+    display: flex;
+    flex-direction: row;
+    font-family: $font-family-base;
+    font-weight: 700;
+    justify-content: space-between;
+
+    @include media-breakpoint-down(md) {
+      font-size: rem(18px);
+    }
+  }
+
+  // checkout form elements on each step
+  .checkout {
+    @import "steps/shipping";   // step 1 of 3 (Shipping)
+    @import "steps/payment";    // step 2 of 3 (Payment Method)
+    @import "steps/review";     // step 3 of 3 (Review & Submit)
+
+    // visible on step 3
+    @import "review/delivery";
+    @import "review/payment";
+
+    // remove card padding on mobile
+    &__card {
+
+      @include media-breakpoint-down(sm) {
+        padding: 0;
+      }
+    }
+
+    // step 3 of 3 – review your order (flush against the viewport)
+    &__review-posters {
+
+      @include media-breakpoint-down(md) {
+        .col-12 {
+          padding: 0;
+        }
+      }
+    }
+
+    // space out the icon within the "edit" button on step 3 of 3
+    &__review-posters,
+    &__delivery-review,
+    &__review-payment {
+
+      @include media-breakpoint-down(md) {
+        .ico-edit {
+          margin-right: rem(10px);
+        }
+      }
+    }
+  }
+
+  // confirmation order view (end of experience)
+  @import "confirmation";
+
+  // bootstrap card overrides
+  .card {
+
+    @include media-breakpoint-down(md) {
+      background-color: transparent;
+      box-shadow: none;
+    }
+
+    &-footer {
+
+      // continue button; adds the arrow
+      .btn--change-step {
+        @include icon-font($ico-arrow-right, right, white);
+      }
+    }
+  }
+
+  // order summary specific to checkout
+  .order-summary {
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+  }
+}
+

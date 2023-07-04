@@ -1,0 +1,207 @@
+.order-confirmation {
+
+  // "Thanks for your order!" heading text
+  h1 {
+    font-weight: 700;
+
+    @include media-breakpoint-down(sm) {
+      font-size: rem(30px);
+      line-height: rem(38px);
+    }
+
+    @include media-breakpoint-only(md) {
+      font-size: rem(50px);
+      line-height: rem(50px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      font-size: rem(64px);
+      line-height: rem(70px);
+    }
+  }
+
+  // "Your Design(s):" heading text
+  h2 {
+    font-size: rem(22px);
+    font-weight: 700;
+    line-height: rem(30px);
+    margin-bottom: rem(30px);
+  }
+
+  // all heading font styles (override global)
+  h1,
+  h2,
+  h6 {
+    font-family: $font-family-base;
+  }
+
+  // order information wrapper
+  &__information {
+    align-items: center;
+    border-bottom: $form-border-style;
+    display: flex;
+    margin-bottom: rem(30px);
+    padding-bottom: rem(30px);
+
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+    }
+
+    @include media-breakpoint-up(lg) {
+      flex-direction: row;
+    }
+  }
+
+  // order details
+  &__details {
+    display: flex;
+    flex-direction: column;
+    font-size: rem(22px);
+    font-weight: 300;
+
+    @include media-breakpoint-down(md) {
+      flex: 1;
+    }
+
+    @include media-breakpoint-up(lg) {
+      flex: 2;
+    }
+
+    .order-number {
+      margin-top: rem(20px);
+
+      span {
+        font-weight: 700;
+        margin-left: rem(10px);
+      }
+    }
+  }
+
+  &__start_again {
+    text-align: center;
+
+    @include media-breakpoint-down(md) {
+      flex: .5;
+      margin-top: rem(40px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      flex: .5;
+      margin-left: rem(16px);
+    }
+
+    .btn {
+      margin-bottom: rem(16px);
+
+      // icon spacing
+      .ico {
+        @include icon-config(left, small, dark);
+      }
+    }
+  }
+
+  // sharing buttons
+  &__share {
+
+    @include media-breakpoint-down(md) {
+      flex: 1;
+      margin-top: rem(40px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      flex: 1.5;
+      margin-left: rem(16px);
+    }
+
+    h6 {
+      display: block;
+      font-weight: 700;
+      margin-bottom: rem(24px);
+    }
+
+    .btn {
+      margin-bottom: rem(16px);
+      width: 100%;
+
+      // icon spacing
+      .ico {
+        @include icon-config(left, small, dark);
+      }
+    }
+  }
+
+  // poster preview row
+  &__designs {
+
+    .poster-previews {
+      display: flex;
+      justify-content: space-between;
+
+      @include media-breakpoint-down(sm) {
+        flex-direction: column;
+      }
+
+      @include media-breakpoint-up(md) {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        margin-bottom: rem(16px);
+        width: 100%;
+
+        // icon spacing
+        .ico {
+          @include icon-config(left, small, dark);
+        }
+      }
+
+      &__poster {
+        flex: 1;
+        text-align: center;
+
+        @include media-breakpoint-down(sm) {
+          margin: 0 auto rem(40px);
+        }
+
+        .share-buttons {
+          width: 75%;
+          min-width: 226px;
+          max-width: 400px;
+          margin: 0 auto;
+        }
+      }
+    }
+
+    // each poster preview image
+    img {
+      box-shadow: $box-shadow-01;
+      max-width: 226px;
+      margin-bottom: rem(40px);
+    }
+  }
+
+  // both columns within the information row
+  &__details,
+  &__share {
+
+    @include media-breakpoint-down(md) {
+      width: 100%;
+    }
+  }
+
+  // both rows of information
+  &__information,
+  &__designs {
+
+    @include media-breakpoint-down(md) {
+      width: 100%;
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin-left: auto;
+      margin-right: auto;
+      width: 75%;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+body,
+#app,
+.app-wrapper {
+  @include height-fill();
+}
+
+.app-wrapper {
+  position: relative;
+}

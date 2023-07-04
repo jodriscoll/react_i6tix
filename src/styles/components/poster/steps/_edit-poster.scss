@@ -1,0 +1,378 @@
+@mixin text-editor() {
+  background-color: transparent;
+  box-shadow: none;
+  color: #fff;
+  font-family: $headings-font-family;
+  line-height: 1.25;
+  outline: none;
+}
+
+@include media-breakpoint-down(sm) {
+  &.edit-poster {
+      height: 110vh;
+      overflow: hidden;
+  }
+}
+
+// step 2 – change, update and manipulate your images and poster selection
+&.edit-poster {
+
+  // poster grid column
+  .poster-grid {
+
+    &__wrapper {
+      @include media-breakpoint-down(md) {
+        display: none;
+      }
+    }
+
+    &__title {
+      font-family: $font-family-base;
+      font-size: rem(24px);
+      font-weight: 700;
+      line-height: rem(60px);
+      margin: 0;
+    }
+
+    &__list {
+      overflow: hidden;
+
+      @include media-breakpoint-only(md) {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        margin-bottom: rem(80px);
+        padding: 0 0 rem(20px);
+        overflow-x: scroll;
+      }
+
+      @include media-breakpoint-up(lg) {
+        // height: 50vh;
+        overflow-y: auto;
+      }
+    }
+
+    &__item {
+
+      @include media-breakpoint-down(sm) {
+        margin-bottom: rem(25px);
+      }
+
+      @include media-breakpoint-up(lg) {
+        margin-bottom: $spacer;
+      }
+    }
+  }
+
+  // poster template thumbnail(s)
+  .poster-template {
+    background: transparent no-repeat top center;
+    background-size: cover;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    touch-action: pan-y;
+
+    @include media-breakpoint-down(sm) {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    // poster template (text) frame wrapper
+    &__text {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    // poster template (text) frame
+    &__frame {
+      position: relative;
+      width: 100%;
+
+      // text input
+      input,
+      textarea {
+        border: none;
+        border-radius: 0;
+        caret-color: $brand-color-08;
+        font-weight: 500;
+        line-height: 1.25;
+        position: relative;
+        text-align: center;
+        transition: background-color .2s ease-in-out;
+
+        // placeholder text
+        &::placeholder {
+          align-self: center;
+          font-weight: 700;
+          letter-spacing: 0;
+        }
+
+        // when the user focuses or activates the input field
+        &:focus,
+        &:active {
+          @include text-editor();
+
+          &::placeholder {
+            letter-spacing: 0;
+            text-indent: -9999px;
+          }
+        }
+      }
+
+      textarea {
+        overflow: auto;
+        resize: none;
+
+        // placeholder text
+        &::placeholder {
+          line-height: rem(70px);
+        }
+      }
+
+      // if the input field has text present
+      &--has-text {
+
+        input,
+        textarea {
+          @include text-editor();
+        }
+      }
+    }
+
+    // images within the grid
+    &__image {
+
+      @include media-breakpoint-only(md) {
+        height: 202px;
+        margin: 0 auto;
+        max-width: 118px;
+      }
+
+      img {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    }
+
+    // title for the image within the grid
+    &__title {
+      font-family: $font-family-base;
+      font-size: rem(18px);
+      font-weight: 700;
+      line-height: rem(21px);
+      margin: rem(8px) 0 0;
+    }
+
+    // dimensions for the image within the grid
+    &__dimensions {
+      font-size: rem(14px);
+    }
+
+  }
+
+  // poster editor column
+  .poster-editor {
+    justify-content: center;
+
+    @include media-breakpoint-down(md) {
+      max-height: 100vh;
+      min-height: 100vh;
+    }
+
+    @include media-breakpoint-up(lg) {
+      align-items: center;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      //max-height: calc(100vh - 82px);
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding-top: rem(40px);
+    }
+
+    .poster-template {
+      background-size: cover;
+      box-shadow: $box-shadow-01;
+      width: 100%;
+
+      @include media-breakpoint-down(md) {
+        margin: 0;
+        order: 2;
+      }
+    }
+
+    // "customize your design – click on a photo or text area to modify it!" text
+    .poster-help {
+      font-family: $font-family-base;
+      font-size: rem(16px);
+
+      @include media-breakpoint-down(md) {
+        color: #fff;
+        margin-bottom: rem(15px);
+        margin-top: rem(15px);
+        order: 1;
+        padding-right: rem(95px);
+        top: 0;
+
+        em {
+          display: block;
+          font-size: rem(14px);
+          font-weight: 300;
+        }
+      }
+
+      @include media-breakpoint-up(lg) {
+        margin-bottom: rem(16px);
+        margin-top: rem(40px);
+      }
+    }
+  }
+
+  // poster editor image upload wrapper
+  .poster-uploads {
+    height: 100%;
+    position: relative;
+    width: 100%;
+  }
+
+  // poster editor image border
+  .poster-frame {
+    position: absolute;
+    z-index: 9;
+
+    &__container {
+      height: 100%;
+      position: relative;
+      width: 100%;
+    }
+
+    &-container {
+      @include media-breakpoint-down(xs) {
+        padding: 0;
+      }
+    }
+
+    &__overlay {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 20;
+    }
+
+    &__editor {
+      height: 100%;
+      left: 0;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 30;
+    }
+
+    // when there isn't an image defined within a well
+    &--no-image {
+
+      .poster-frame__editor {
+        border: 2px solid $brand-color-01;
+      }
+    }
+
+    // placeholder text
+    &__placeholder-text {
+      background-color: $brand-color-05;
+      align-items: center;
+      color: $brand-color-10;
+      display: flex;
+      font-family: $font-family-base;
+      font-weight: 700;
+      height: 100%;
+      justify-content: center;
+      left: 0;
+      padding: rem(16px);
+      position: absolute;
+      text-align: center;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    // image placement area
+    &__editor,
+    &__overlay,
+    &__placeholder-text {
+      //border-radius: rem(15px);
+    }
+  }
+
+  .global-loader {
+    display: none;
+  }
+
+  // class applied during (html2canvas) render
+  &.rendering {
+
+    .poster-frame-warning-indicator,
+    .poster-res-warning {
+      display: none;
+    }
+
+    .poster-template {
+
+      &__frame {
+
+        input {
+          background-color: transparent;
+          transition: background-color 0s;
+        }
+      }
+    }
+
+    .global-loader {
+      display: block;
+
+      @include media-breakpoint-up(md) {
+        .loader-block {
+          background: #000;
+        }
+      }
+    }
+
+    &:not(.animation) {
+
+      .poster-template {
+        left: -10000px;
+        position: absolute;
+        top: 0;
+        transform: rotate(0deg) scale(1); // override style="" stylesf
+      }
+    }
+
+    &.animation {
+
+      .poster-template {
+        opacity: 0;
+        transition: opacity .5s;
+      }
+    }
+
+    .poster-help {
+      opacity: 0;
+      transition: opacity .5s;
+    }
+
+    @include media-breakpoint-down(sm) {
+      .btn-grid-view,
+      .btn--change-step {
+        transition: bottom .5s;
+        bottom: -100px;
+      }
+    }
+  }
+}

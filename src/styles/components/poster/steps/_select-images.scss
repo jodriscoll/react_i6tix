@@ -1,0 +1,126 @@
+// step 1 – select your images to put on the poster
+&.select-images {
+  @include media-breakpoint-down(md) {
+    height: 100%;
+
+    // make everything 100% height
+    > .container {
+      height: 100%;
+      max-width: rem(540px);
+
+      .row {
+        height: 100%;
+      }
+    }
+  }
+
+  // select your source wrapper
+  .image-source-selection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include media-breakpoint-down(md) {
+      @include absolute-middle();
+      background-color: $mobile-overlay;
+      height: 100%;
+      position: absolute;
+      z-index: 1;
+    }
+
+    // storefront secondary logo
+    .logo {
+      @include media-breakpoint-down(md) {
+        display: none;
+      }
+    }
+
+    // card overrides
+    .card {
+
+      @include media-breakpoint-down(md) {
+        width: 300px;
+      }
+
+      // "select up to 3 photos from" card
+      &-body {
+        padding: rem(35px) rem(40px);
+      }
+
+      // go back card footer (only mobile)
+      &-footer {
+        @include media-breakpoint-down(md) {
+
+          a {
+            align-items: center;
+            color: #000;
+            display: flex;
+            flex-direction: row;
+            font-weight: 700;
+
+            &:hover,
+            &:focus {
+              text-decoration: none;
+            }
+
+            i {
+              font-size: rem(18px);
+            }
+          }
+        }
+        @include media-breakpoint-up(lg) {
+          display: none;
+        }
+      }
+    }
+
+    // image selection buttons
+    .btn {
+      //display: block;
+      margin-top: rem(16px);
+      width: 100%;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+
+      // icon spacing
+      .ico {
+        @include icon-config(left, small, dark);
+      }
+    }
+  }
+
+  // poster presentation
+  .poster-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include media-breakpoint-down(md) {
+      @include height-fill();
+    }
+
+    img {
+      box-shadow: $box-shadow-02;
+      margin: auto;
+
+      @include media-breakpoint-down(md) {
+        height: auto;
+        width: 100%;
+      }
+
+      @include media-breakpoint-up(lg) {
+        height: auto;
+        transform: rotate(5deg);
+        transition: transform .2s ease-in-out;
+        width: 75%;
+
+        &:hover {
+          transform: scale(1.05) rotate(4deg);
+        }
+      }
+    }
+  }
+}

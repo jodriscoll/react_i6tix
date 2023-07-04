@@ -1,0 +1,30 @@
+&__mobile-poster-grid {
+  margin: 0;
+  max-width: 100%;
+
+  .modal-content {
+    border-radius: 0;
+  }
+
+  .modal-body {
+    height: 70vh;
+    overflow-y: auto;
+
+    h1 {
+      font-size: rem(24px);
+      font-weight: 700;
+    }
+  }
+
+  // managing the component
+  .poster-grid {
+
+    .logo {
+      display: none;
+    }
+
+    > .container {
+      padding: 0;
+    }
+  }
+}

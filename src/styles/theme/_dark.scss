@@ -1,0 +1,28 @@
+$dark-color: #000;
+
+.app-wrapper {
+
+  // partner logos
+  .logo--my-memories-poster,
+  .logo--isix {
+
+    svg {
+      g {
+        fill: $dark-color;
+      }
+    }
+  }
+
+  // instructor helpers
+  .instructors {
+
+    svg {
+      border: 1px solid pink;
+
+      g {
+        border: 1px solid pink;
+        fill: $dark-color;
+      }
+    }
+  }
+}

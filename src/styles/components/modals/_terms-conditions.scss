@@ -1,0 +1,36 @@
+&__terms-conditions,
+&__refund-policies {
+
+  // when shown...
+  .show & {
+
+    @include media-breakpoint-down(sm) {
+      margin: rem(60px) auto;
+      max-width: 90%;
+    }
+
+    @include media-breakpoint-up(md) {
+      margin: rem(90px) auto rem(28px);
+    }
+  }
+
+  .modal {
+
+    &-body {
+      @include modal-size(350px, 50vh, medium);
+      @include modal-size(400px, 400px, large);
+      padding-bottom: 0;
+
+      @include media-breakpoint-down(sm) {
+        overflow: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+
+    // designs call for a centered button
+    &-footer {
+      justify-content: center;
+    }
+  }
+}

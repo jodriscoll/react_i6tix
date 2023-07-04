@@ -1,0 +1,29 @@
+&__source-select {
+
+  .source-selection {
+    display: flex;
+    flex-direction: column;
+    margin: rem(40px) auto;
+
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+    }
+    @include media-breakpoint-up(md) {
+      width: 50%;
+    }
+
+    .btn {
+      //display: block;
+      margin-top: rem(16px);
+      width: 100%;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+
+      .ico {
+        margin-right: rem(10px);
+      }
+    }
+  }
+}

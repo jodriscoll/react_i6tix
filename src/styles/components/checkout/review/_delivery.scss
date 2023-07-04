@@ -1,0 +1,17 @@
+&__delivery-review {
+  @include order-review();
+
+  // edit button within the delivery method area
+  .shipping-method {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: rem(30px);
+  }
+
+  // address span text blocks
+  .address {
+    display: flex;
+    flex-direction: column;
+  }
+}

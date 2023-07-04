@@ -1,0 +1,49 @@
+&__review {
+  position: relative;
+
+  // posters information
+  &-posters {
+
+    .btn-edit {
+      margin-left: auto;
+      margin-top: auto;
+    }
+  }
+
+  // shipping information
+  &-shipping {
+    margin-top: rem(40px);
+  }
+
+  // both shipping and payment (step 2 & 3)
+  &-shipping,
+  &-payment {
+    margin-top: rem(60px);
+  }
+}
+
+&__step-3 {
+
+  .card-footer {
+
+    @include media-breakpoint-down(md) {
+      display: flex;
+    }
+
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+  }
+
+  .checkout__review-posters {
+
+    // edit button handling
+    .btn-edit {
+      @include media-breakpoint-down(md) {
+        bottom: 0;
+        position: absolute;
+        right: 0;
+      }
+    }
+  }
+}

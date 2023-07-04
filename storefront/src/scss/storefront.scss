@@ -1,0 +1,20 @@
+@import "base/variables";
+@import "base/functions";
+@import "base/mixins";
+@import "base/fonts";
+@import "base/icons";
+
+// globals
+@import "base/normalize";
+@import "base/scaffolding";
+
+// objects
+@import "objects/header";
+@import "objects/main";
+@import "objects/footer";
+
+// components
+@import "components/loader";
+
+// 3rd party
+@import "components/slick-slider/slick-theme";

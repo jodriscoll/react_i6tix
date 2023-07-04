@@ -1,0 +1,42 @@
+.card {
+  border: none;
+  box-shadow: $box-shadow-02;
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &-title {
+    font-family: $font-family-base;
+    font-weight: 700;
+    margin-bottom: rem(24px);
+
+    @include media-breakpoint-down(md) {
+      font-size: rem(16px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      font-size: rem(24px);
+    }
+
+    &.checkout__title {
+      border-bottom: $form-border-style;
+      display: flex;
+      justify-content: space-between;
+      padding: rem(20px);
+
+      @include media-breakpoint-down(md) {
+        font-size: rem(18px);
+      }
+    }
+  }
+
+  &-footer {
+    background-color: transparent;
+    border-top: 2px solid $brand-color-05;
+    display: flex;
+    justify-content: center;
+  }
+}

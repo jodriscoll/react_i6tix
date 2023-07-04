@@ -1,0 +1,83 @@
+image: rvtraveller/docker-aws-node:1.1
+
+instance:
+  type: deploy
+  variables:
+    # The web root on the server.  This can be overridden by project variables.
+    WEB_ROOT: /mnt/cbs01.i6merchportal.com/vhosts/lovemyposter.com
+    # The SSH HOST to deploy the project to.
+    SSH_HOST: $SSH_HOST || ""
+    # The SSH Private key to use to connect to the deployment server.
+    SSH_PRIVATE_KEY: $SSH_PRIVATE_KEY || ""
+    # The SSH User to use to connect to the deployment server.
+    SSH_USER: $SSH_USER || ""
+    # For convenience, combine the variables.
+    REMOTE_DIRECTORY: $WEB_ROOT/$SUBDIRECTORY
+  before_script:
+    # See https://docs.gitlab.com/ee/ci/ssh_keys/README.html
+    - eval $(ssh-agent -s) && bash -c 'ssh-add <(echo "$SSH_PRIVATE_KEY")'
+    # Avoid ssh prompting when connecting to new ssh hosts
+    - mkdir -p $HOME/.ssh && echo "StrictHostKeyChecking no" >> "$HOME/.ssh/config"
+  script:
+    - npm install
+    - SUBDIRECTORY=`npm run --silent directory`
+    - REMOTE_DIRECTORY=$WEB_ROOT/$SUBDIRECTORY
+    - npm run prod
+    - sed -i -e "s/\"\/icons/\"\/$SUBDIRECTORY\/icons/g" dist/*.css
+    - sed -i -e "s/\"\/images/\"\/$SUBDIRECTORY\/images/g" dist/*.css
+    - ssh $SSH_USER@$SSH_HOST "mkdir -p $REMOTE_DIRECTORY"
+    - scp -r dist/. $SSH_USER@$SSH_HOST:$REMOTE_DIRECTORY
+  only:
+    - master
+  except:
+    - branches@dalb/Graf
+  artifacts:
+    paths:
+      - dist/
+
+sync_to_gitlab:
+  image: publysher/hugo
+  type: deploy
+  variables:
+    GITLAB_HOST: gitlab.com
+    GITLAB_GROUP: i6tix
+    GITLAB_REPO: Graf
+    GITLAB_FULL_URL: https://$GITLAB_USERNAME:$GITLAB_TOKEN@$GITLAB_HOST/$GITLAB_GROUP/$GITLAB_REPO
+  script:
+    - DIR_NAME=${PWD##*/}
+    - echo $DIR_NAME
+    - cd ..
+    - git clone $GITLAB_FULL_URL upstream
+    - cd upstream
+    - mv .git ../
+    - cp -R ../$DIR_NAME/* .
+    - cp -R ../$DIR_NAME/.gitlab-ci.yml .
+    - rm -rf .git
+    - mv ../.git ./
+    - pwd
+    - git status
+    - git config --global user.name $GITLAB_USER_NAME
+    - git config --global user.email $GITLAB_USER_EMAIL
+    - git commit -a -m "Updates from Mindgrub."
+    - git push
+  when: manual
+
+production:
+  type: deploy
+  script:
+    - npm install
+    - npm run prod
+    - aws s3 sync dist/ s3://$AWS_BUCKET --exclude ".gi*"
+  artifacts:
+    paths:
+      - dist/
+  only:
+    - master@dalb/Graf
+
+development:
+  type: build
+  script:
+    - npm install
+    - npm run lint
+  except:
+    - master@dalb/Graf

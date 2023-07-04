@@ -1,0 +1,48 @@
+&__instagram {
+
+  .instagram {
+
+    // image within album wrapper
+    &__images {
+      max-height: $scroll-height;
+      overflow-x: hidden;
+      width: 100%;
+
+      > ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+    }
+
+    // image within album instances
+    &__image {
+      align-items: center;
+      background-color: #000;
+      border: 4px solid transparent;
+      display: inline-flex;
+      height: $thumbnail-size;
+      margin-bottom: rem(10px);
+      overflow: hidden;
+      transition: border-color .2s ease-in-out;
+      width: $thumbnail-size;
+
+      &:hover {
+        border-color: $brand-color-08;
+        cursor: pointer;
+      }
+
+      img {
+        height: auto;
+        width: 100%;
+      }
+    }
+
+    // loading, error and no images text (wrapper)
+    &__loading,
+    &__none {
+      width: 100%;
+    }
+  }
+}

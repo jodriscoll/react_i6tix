@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script> 
+      var $buoop = {
+          required: {e:15,f:56,o:-3,s:10,c:61,ios:10},
+          reminder: 0,
+          api:2018.06,
+          onshow: function(infos){
+              window.location = "./browserupdate.html";
+          },
+      }; 
+      function $buo_f(){ 
+          var e = document.createElement("script"); 
+          e.src = "//browser-update.org/update.min.js"; 
+          document.body.appendChild(e);
+      };
+      try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+      catch(e){window.attachEvent("onload", $buo_f)}
+  </script>
+  <script src=https://cdn.ravenjs.com/3.24.0/raven.min.js crossorigin=anonymous></script>
+  <script>
+    Raven.config('https://ea673649c6444047b73a6de1983b5690@sentry.io/1219957', {
+      release: '0-0-0',
+      environment: window.location.host,
+    }).install()
+  </script>
+  <% if (htmlWebpackPlugin.options.trackJSToken) { %>
+  <script>window._trackJs = {token: '<%= htmlWebpackPlugin.options.trackJSToken %>'};</script>
+  <script src="https://d2zah9y47r7bi2.cloudfront.net/releases/current/tracker.js"></script>
+  <% } %>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width">
+  <% if (htmlWebpackPlugin.options.headHtmlSnippet) { %>
+    <%= htmlWebpackPlugin.options.headHtmlSnippet %><%
+  } %>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+<div id="app">
+<% if (htmlWebpackPlugin.options.appMountHtmlSnippet) { %>
+<%= htmlWebpackPlugin.options.appMountHtmlSnippet %><%
+} %>
+</div>
+</body>
+</html>

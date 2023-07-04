@@ -1,0 +1,25 @@
+$light-color: #fff;
+
+.app-wrapper {
+
+  // partner logos
+  .logo--my-memories-poster,
+  .logo--isix {
+
+    > svg {
+      g {
+        fill: $light-color;
+      }
+    }
+  }
+
+  // instructor helpers
+  .instructors {
+
+    > svg {
+      > g {
+        fill: $light-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,124 @@
+$arrow-size:        15px;
+$arrow-top:         11px;
+$arrow-offset:      14px;
+
+&-carousel {
+
+  .logo {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .slick {
+
+    &-track {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    &-slide {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-prev,
+    &-next {
+      background: $brand-color-04;
+      border-radius: 100%;
+      bottom: 0;
+      height: 50px;
+      left: 50%;
+      position: absolute;
+      top: auto;
+      transform: none;
+      width: 50px;
+      z-index: 50;
+    }
+
+    &-prev {
+
+      @include media-breakpoint-down(sm) {
+        margin-left: rem(-170px);
+      }
+
+      @include media-breakpoint-up(md) {
+        margin-left: rem(-280px);
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: $arrow-top;
+        left: $arrow-offset;
+        border-right: $arrow-size solid white;
+        border-top: $arrow-size solid transparent;
+        border-bottom: $arrow-size solid transparent;
+      }
+    }
+
+    &-next {
+
+      @include media-breakpoint-down(sm) {
+        margin-left: rem(120px);
+      }
+
+      @include media-breakpoint-up(md) {
+        margin-left: rem(230px);
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: $arrow-top;
+        right: $arrow-offset;
+        border-left: $arrow-size solid white;
+        border-top: $arrow-size solid transparent;
+        border-bottom: $arrow-size solid transparent;
+      }
+    }
+  }
+}
+
+.poster--slide {
+  position: relative;
+  padding: rem(60px) rem(20px);
+
+  &__content {
+    margin: 0 auto;
+    width: rem(500px);
+
+    @include media-breakpoint-down(md) {
+      max-width: 100%;
+    }
+  }
+
+  &__image {
+    box-shadow: $box-shadow-01;
+    height: 512px;
+    margin: 0 auto;
+    width: 331px;
+
+    .slick-current & {
+      height: 654px;
+      width: 423px;
+    }
+  }
+
+  &__select {
+    padding: 0 ($carousel-control-width + $spacer);
+    text-align: center;
+    margin-top: rem(-30px);
+    opacity: 0;
+    width: 100%;
+    z-index: 3;
+
+    .slick-current & {
+      opacity: 1;
+      transition: opacity .6s ease-in .3s;
+      width: 100%;
+    }
+  }
+}

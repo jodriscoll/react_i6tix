@@ -1,0 +1,12 @@
+.dropdown {
+
+  &-menu {
+    box-shadow: $box-shadow-02;
+    min-width: 0;
+  }
+
+  &-item {
+    display: inline-flex;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,5 @@
+// position element vertically middle to the parent IF it is position absolutely (think of :before / :after)
+@mixin vertical-middle() {
+  top: 50%;
+  transform: translateY(-50%);
+}

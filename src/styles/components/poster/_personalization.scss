@@ -1,0 +1,149 @@
+// personalization engine
+&-personalization {
+  position: relative;
+  z-index: 10;
+
+  @include media-breakpoint-down(md) {
+    @include height-fill();
+
+    &__step {
+      @include height-fill();
+    }
+
+    &-header {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    .poster-editor {
+      min-height: 800px;
+    }
+  }
+
+  &-header {
+    min-height: rem(82px);
+
+    @include media-breakpoint-down(md) {
+      @include make-container-max-widths();
+      align-items: center;
+      display: flex;
+      justify-content: flex-end;
+      left: 0;
+      margin: auto;
+      position: absolute;
+      right: 0;
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding: rem(20px) rem(28px) 0;
+    }
+  }
+
+  &-wrapper {
+
+    // step 1 & 2
+    &.poster-step-1,
+    &.poster-step-2 {
+
+      @include media-breakpoint-down(md) {
+        background-color: $brand-color-15;
+        background-image: none;
+
+        .cart {
+
+          // set the cart icon to white for the dark backdrop on mobile
+          a {
+            color: #fff;
+          }
+        }
+
+        // position the next/continue buttons to match the designs
+        .btn--next {
+          bottom: 20px;
+          position: fixed;
+          right: 20px;
+        }
+      }
+    }
+
+    // step 2 - poster editor view
+    &.poster-step-2 {
+
+      // bring the cart to the front for the ability to click
+      .cart {
+        z-index: 999;
+      }
+
+      // add additional spacing to the second step on mobile/tablet to accommodate the "toolbar"
+      .poster-personalization {
+
+        @include media-breakpoint-down(md) {
+          padding-bottom: rem(80px);
+        }
+      }
+    }
+
+    // step 3 - review your poster
+    &.poster-step-3 {
+
+      // remove the cart from being displayed on the poster preview
+      .cart {
+        display: none;
+      }
+    }
+  }
+
+  // (child elements) each step
+  &__step {
+    position: relative;
+
+    // step 1
+    @import "steps/select-images";
+
+    // step 2
+    @import "steps/edit-poster";
+
+    // step 3
+    @import "steps/preview-poster";
+
+    .poster-buttons__container {
+      @include media-breakpoint-down(md) {
+        background: rgba($brand-color-15, .75);
+        bottom: 0;
+        height: rem(80px);
+        position: fixed;
+        width: 100%;
+      }
+    }
+
+    // global shared between steps
+    .btn--change-step {
+
+      @include media-breakpoint-up(lg) {
+        position: fixed;
+        bottom: 15px;
+      }
+
+      // set the continue/next button to be attached to the right of the DOM
+      &.btn--next {
+
+        @include media-breakpoint-up(lg) {
+          border-bottom-right-radius: 0;
+          border-top-right-radius: 0;
+          right: 0;
+        }
+      }
+
+      // set the back button ( <- ) to be attached to the left of the DOM
+      &.btn--previous {
+
+        @include media-breakpoint-up(lg) {
+          border-bottom-left-radius: 0;
+          border-top-left-radius: 0;
+          left: 0;
+        }
+      }
+    }
+  }
+}

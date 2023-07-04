@@ -1,0 +1,108 @@
+@mixin _assert-ascending($map, $map-name) {
+  $prev-key: null;
+  $prev-num: null;
+  @each $key,
+  $num in $map {
+    @if $prev-num==null { }
+    @else if not comparable($prev-num, $num) {
+      @warn "Potentially invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} whose unit makes it incomparable to #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    }
+    @else if $prev-num>=$num {
+      @warn "Invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    }
+    $prev-key: $key;
+    $prev-num: $num;
+  }
+}
+
+@mixin _assert-starts-at-zero($map) {
+  $values: map-values($map);
+  $first-value: nth($values, 1);
+  @if $first-value !=0 {
+    @warn "First breakpoint in `$grid-breakpoints` must start at 0, but starts at #{$first-value}.";
+  }
+}
+
+// colors
+$color-black:             rgba(#000, .5);
+$color-prussian:          #15325a;
+$color-jungle:            #2a353a;
+$color-pomona:            #155a1d;
+$color-lava:              #d21919;
+$color-cordovan:          #8d3d43;
+$color-carmine:           #ee3b34;
+$color-pastel:            #d8cdb7;
+$color-timberwolf:        #d8d8d8;
+$color-solidwhite:        #fff;
+$color-solidblack:        #000;
+$color-dimgrey:           #6a6a6a;
+
+$social-facebook:         #3b5998;
+$social-twitter:          #1da1f2;
+$social-instagram:        #d6249f;
+
+// typography
+$font-family-sans-serif:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$oswald:                  'Oswald', $font-family-sans-serif;
+$nunitosans:              'Nunito Sans', $font-family-sans-serif;
+
+$font-family-serif:       'Georgia', 'Times New Roman', serif;
+$font-family-monospace:   Monaco, Consolas, monospace;
+$font-family-base:        $nunitosans;
+$headings-font-family:    $oswald;
+
+$font-size-base:          rem(18px);
+$line-height-base:        1.5;
+
+$font-weight-light:       300;
+$font-weight-normal:      400;
+$font-weight-medium:      500;
+$font-weight-demi:        600;
+$font-weight-bold:        700;
+$font-weight-base:        $font-weight-normal;
+
+// breakpoints
+$breakpoints: (
+  xs:   0,
+  sm:   576px,
+  md:   768px,
+  lg:   1024px,
+  xl:   1200px,
+  xxl:  1400px,
+  xxxl: 1800px
+);
+
+@include _assert-ascending( $breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero( $breakpoints );
+
+// Grid containers
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+);
+
+@include _assert-ascending( $container-max-widths, "$container-max-widths");
+
+// fixed (mobile) size variables
+//$slider-max-height:       500px;    // 500 works for Galaxy S5; 520 works for iPhone 6
+$slider-max-height:       60vh;
+$slide-img-height:        280px;
+
+// scaled (desktop) size variables
+$scaled-header-height:    30vh;
+$scaled-main-height:      60vh;
+$scaled-footer-height:    10vh;
+
+// pagination arrow sizes
+$arrow-size-large:        15px;
+$arrow-top-large:         13px;
+$arrow-offset-large:      18px;
+$arrow-size-small:        10px;
+$arrow-top-small:         10px;
+$arrow-offset-small:      12px;
+
+// pagination arrow positioning
+$arrow-small-position:    calc(50% - 160px);
+$arrow-large-position:    calc(50% - 240px);

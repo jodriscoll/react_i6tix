@@ -1,0 +1,46 @@
+.instructors {
+
+  @include media-breakpoint-down(md) {
+    .get-started,
+    .message-reminder,
+    .finished-design {
+      display: none;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+
+    // let's get started
+    .get-started {
+      margin-top: rem(58px);
+    }
+
+    // only visible on step 3 (poster preview)
+    .message-reminder,
+    .finished-design {
+      bottom: 20%;
+      position: absolute;
+    }
+
+    .message-reminder {
+      right: -300px;
+    }
+
+    .finished-design {
+      right: -245px;
+    }
+  }
+
+  span {
+    @include media-breakpoint-down(md) {
+      text-align: center;
+      display: block;
+      margin-top: rem(40px);
+      font-weight: 700;
+    }
+
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>Browser Update Required</title>
+    <meta name="viewport" content="width=device-width">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700|Oswald:200,300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/styles/storefront.css">
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body>
+<div id="browserupdate">
+    <main class="browserupdate-main">
+        <h1>Browser Update Required</h1>
+        <p>The MyPoster experience relies on advanced browser functionality. Your browser is out of date, and needs to be updated to take advantage of the MyPoster experience. Recent versions of all modern broswers are supported, so the choice is yours!</p>
+        <p>To learn how to update your browser, please visit <a href="https://browser-update.org/update-browser.html">Browser Update</a>.</p>
+    </main>
+    <footer class="browserupdate-footer">
+        <div class="left">
+            <img src="./assets/imgs/footer-logo-left.svg" alt="my Memories Poster"/>
+        </div>
+        <div class="right">
+            <img src="./assets/imgs/footer-logo-right.svg" alt="iSix"/>
+        </div>
+    </footer>
+</div>
+<script src=https://cdn.ravenjs.com/3.24.0/raven.min.js crossorigin=anonymous></script>
+<script>
+  Raven.config('https://ea673649c6444047b73a6de1983b5690@sentry.io/1219957', {
+    release: '0-0-0',
+    environment: window.location.host,
+  }).install()
+</script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="./vendor/localforage/localforage.min.js"></script>
+<script type="text/javascript" src="./assets/js/storefront.js"></script>
+<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-119544040-1', 'auto');
+</script>
+</body>
+</html>

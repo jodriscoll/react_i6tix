@@ -1,0 +1,57 @@
+.alert {
+  font-size: $font-size-sm;
+  font-weight: normal;
+}
+
+.global-alert {
+  position: fixed;
+  top: rem(20px);
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  .alert {
+    position: relative;
+    padding-left: rem(60px);
+    margin: 0 auto;
+    background: $dark;
+    color: #fff;
+    border: 2px solid #fff;
+    box-shadow: $box-shadow-02;
+    z-index: 1000;
+
+    @include media-breakpoint-up(md) {
+      width: 43.75%;
+    }
+
+    .ico {
+      position: absolute;
+      top: rem(10px);
+      left: $alert-padding-x;
+      width: rem(27px);
+      height: rem(27px);
+      padding: rem(3px) 0;
+      font-size: rem(20px);
+      background: $info;
+      border-radius: 100%;
+      text-align: center;
+    }
+
+    .close {
+      @include icon-font($ico-close, 'alone');
+      color: inherit;
+      opacity: 1;
+
+      span {
+        display: none;
+      }
+    }
+
+    &-danger {
+      .ico {
+        background: $danger;
+      }
+    }
+  }
+
+}

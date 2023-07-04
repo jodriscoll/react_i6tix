@@ -1,0 +1,75 @@
+// body class injected; prevent body scroll
+body.modal-open {
+  @include media-breakpoint-down(sm) {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+}
+
+// parent Reactstrap wrapper class
+.modal {
+
+  // added specificity
+  &-dialog {
+    font-family: $font-family-base;
+
+    .show & {
+      box-shadow: $box-shadow-01;
+    }
+
+    &.modal {
+      @import "terms-conditions";
+      @import "facebook";
+      @import "instagram";
+      @import "source-select";
+      @import "mobile-poster-grid";
+    }
+  }
+
+  // headers
+  &-header {
+    border-bottom: none;
+    justify-content: center;
+  }
+
+  // footers
+  &-footer {
+    border-top: $form-border-style;
+  }
+
+  // modal header title
+  &-title {
+    font-weight: 700;
+  }
+
+  // general modal close
+  .ico-close {
+    color: #fff;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    @include media-breakpoint-down(sm) {
+      font-size: rem(30px);
+    }
+
+    @include media-breakpoint-up(md) {
+      font-size: rem(40px);
+    }
+
+    &.grid-view {
+      @include media-breakpoint-down(sm) {
+        bottom: 20px;
+        font-size: rem(50px);
+        left: 20px;
+        right: auto;
+        top: auto;
+        position: absolute;
+      }
+    }
+  }
+
+  // social modal styling (shared between facebook and instagram)
+  @import "social";
+}

@@ -1,0 +1,190 @@
+.btn {
+  align-items: center;
+  background-color: $brand-color-05;
+  border: none;
+  color: #000;
+
+  // only target button usages (avoids the issue with DropDown buttons)
+  button & {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  // when a user interacts
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $brand-color-07;
+    color: #fff;
+
+    &:before {
+      color: #fff;
+    }
+  }
+
+  span {
+    font-family: $font-family-base;
+    font-weight: 700;
+    position: relative;
+    transition: color .15s ease-in-out;
+  }
+
+  // custom "brand" button
+  &-brand {
+    background-color: $brand-color-04;
+
+    @include media-breakpoint-up(lg) {
+      box-shadow: $box-shadow-02;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: darken($brand-color-04, 25%);
+    }
+
+    // text color within the button
+    span {
+      color: #fff;
+      font-family: $headings-font-family;
+      font-size: rem(24px);
+      font-weight: 300;
+      text-transform: uppercase;
+    }
+
+    // active on the poster preview step
+    &.disabled {
+      background-color: $brand-color-11;
+
+      span {
+        color: $brand-color-12;
+      }
+    }
+
+    // icons within the brand buttons
+    .ico {
+      @include icon-config(right, large, light);
+    }
+  }
+
+  // "make changes" button (step 3)
+  &-changes {
+    @include icon-font($ico-edit, left, black);
+  }
+
+  // "view cart" button modifiers
+  &-edit,
+  &-remove {
+    color: #000;
+
+    @include media-breakpoint-up(md) {
+
+      .ico {
+        margin-right: rem(10px);
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      min-width: 120px;
+    }
+  }
+
+  // "view cart" remove button
+  &-remove {
+    margin-left: rem(14px);
+  }
+
+  // facebook sharing/photo select button
+  &-facebook {
+    @include icon-font($ico-facebook, left, white);
+    background-color: $social-facebook;
+    color: #fff;
+
+    &:hover {
+      background-color: darken($social-facebook, 5%);
+    }
+
+    span {
+      font-weight: 500;
+    }
+  }
+
+  // mobile only grid view for posters
+  &-grid-view {
+
+    @include media-breakpoint-down(md) {
+      @include icon-font($ico-grid, alone, white);
+      background-color: transparent;
+      bottom: 20px;
+      font-size: rem(48px);
+      line-height: 1;
+      padding: 0;
+      position: fixed;
+      left: 20px;
+
+      &.btn {
+        &:hover,
+        &:focus,
+        &:active {
+          background-color: transparent;
+        }
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+  }
+
+  // global styles for change step buttons
+  &--change-step {
+
+    @include media-breakpoint-down(sm) {
+
+      .poster-personalization & {
+        bottom: 20px;
+        position: fixed;
+        right: 0;
+      }
+    }
+
+    &:before,
+    &:after {
+      color: #fff;
+      font-size: rem(30px);
+      font-variant: normal;
+      font-weight: normal;
+      line-height: 1;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+    }
+  }
+
+  // back button (step 2)
+  &--back {
+
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+
+    @include media-breakpoint-up(lg) {
+      @include icon-font($ico-arrow-left, alone, white);
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+
+      span {
+        display: none;
+      }
+    }
+  }
+
+  // purchase/continue button (step 2 / 3)
+  &--next {
+    @include icon-font($ico-arrow-right, right, white);
+
+    @include media-breakpoint-down(md) {
+      z-index: 2;
+    }
+  }
+}
